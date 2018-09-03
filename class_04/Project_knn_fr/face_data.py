@@ -62,4 +62,5 @@ print face_data.shape
 np.save(dataset_path + file_name, face_data)
 print "Dataset saved at: {}".format(dataset_path + file_name + '.npy')
 
+cap.release()
 cv2.destroyAllWindows()
