@@ -35,15 +35,18 @@ cap = cv2.VideoCapture(0)
 # Load the haar cascade for frontal face
 face_cascade = cv2.CascadeClassifier('./haarcascade_frontalface_alt.xml')
 
-dataset_path = '../data/face_dataset/'
+dataset_path = './data/'
 
 face_data = []
 labels = []
 class_id = 0
+names = {}
+
 
 # Dataset prepration
 for fx in os.listdir(dataset_path):
 	if fx.endswith('.npy'):
+		names[class_id] = fx[:-4]
 		data_item = np.load(dataset_path + fx)
 		face_data.append(data_item)
 
@@ -53,16 +56,11 @@ for fx in os.listdir(dataset_path):
 
 face_dataset = np.concatenate(face_data, axis=0)
 face_labels = np.concatenate(labels, axis=0).reshape((-1, 1))
-print face_labels.shape
-print face_dataset.shape
+print(face_labels.shape)
+print(face_dataset.shape)
 
 trainset = np.concatenate((face_dataset, face_labels), axis=1)
-print trainset.shape
-
-names = {
-	0: 'shivang',
-	1: 'vasudev'
-}
+print(trainset.shape)
 
 font = cv2.FONT_HERSHEY_SIMPLEX
 
@@ -94,5 +92,6 @@ while True:
 
 	if cv2.waitKey(1) & 0xFF == ord('q'):
 		break
+
 cap.release()
 cv2.destroyAllWindows()
