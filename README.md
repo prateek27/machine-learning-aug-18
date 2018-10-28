@@ -16,3 +16,5 @@
 - `class 14`: Convolutional Neural Networks
 - `class 15`: Autoencoders and CNN Architectures
 - `class 16`: Transfer Learning and Markov Chains
+- `class 17`: RNN and LSTM
+- `class 18`: Tensorflow
